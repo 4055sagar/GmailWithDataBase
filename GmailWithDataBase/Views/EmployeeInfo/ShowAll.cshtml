@@ -1,0 +1,34 @@
+﻿@model IEnumerable<GmailWithDataBase.Models.EmployeeModel>
+
+
+<table border="1" cellpadding="5" cellspacing="5">
+
+
+
+    <tr>
+        <th> Emp Id </th>
+        <th> Name </th>
+        <th>Address </th>
+        <th> Phone </th>
+        <th> Qulification </th>
+        <th> Hobby </th>
+        <th> EmailId </th>
+        <th> Salary </th>
+
+    </tr>
+    @foreach (var data in Model)
+    {
+        <tr>
+        <td>@data.EmpId</td>
+        <td>@data.EmployeeName</td>
+        <td>@data.Address</td>
+        <td>@data.Phone</td>
+        <td>@data.Qualification</td>
+            <td>@data.Hobby</td>
+        <td>@data.EmailId</td>
+        <td>@data.Salary</td>
+         </tr>
+    }
+
+</table>
+
