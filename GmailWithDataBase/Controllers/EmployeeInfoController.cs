@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using GmailWithDataBase.DataAccessLayer_Ef;
+using GmailWithDataBase.Models;
+
 namespace GmailWithDataBase.Controllers
 {
     public class EmployeeInfoController : Controller
@@ -35,7 +37,21 @@ namespace GmailWithDataBase.Controllers
         {
             var ar1 = _dataAccessLayer_EF.Employee.Where(x => x.EmpId == id).FirstOrDefault();
             return View(ar1);
-    }
+         }
+        [HttpPost]
+        public IActionResult Delete(EmployeeModel employeeModel)
+        {
+            var ar1 = _dataAccessLayer_EF.Employee.Where(x => x.EmpId == employeeModel.EmpId).FirstOrDefault();
+            if(ar1 != null)
+            {
+                _dataAccessLayer_EF.Employee.Remove(ar1);
+                _dataAccessLayer_EF.SaveChanges();
+                return RedirectToAction("DisplayAll");
+
+            }
+            return View();
+        }
+
         public IActionResult Edit(int id)
         {
             var ar1 = _dataAccessLayer_EF.Employee.Where(x => x.EmpId == id).FirstOrDefault();
