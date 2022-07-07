@@ -15,5 +15,6 @@ namespace GmailWithDataBase.DataAccessLayer_Ef
         }
 
         public DbSet<EmployeeModel> Employee { get; set; }
+        public DbSet<UserRegistrationDB> UserRegistration { get; set; }
     }
 }

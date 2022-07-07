@@ -26,6 +26,7 @@ namespace GmailWithDataBase
         {
             services.AddControllersWithViews();
             services.AddDbContextPool<DataAccessLayer_EF>(options => options.UseSqlServer(Configuration.GetConnectionString("MyConnection")));
+            services.AddSession(options =>{ options.IdleTimeout = TimeSpan.FromMinutes(3); }); 
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -42,14 +43,14 @@ namespace GmailWithDataBase
             app.UseStaticFiles();
 
             app.UseRouting();
-
+            app.UseSession();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=EmployeeInfo}/{action=DisplayAll}/{id?}");
+                    pattern: "{controller=UserAccount}/{action=ShowAll}/{id?}");
             });
         }
     }

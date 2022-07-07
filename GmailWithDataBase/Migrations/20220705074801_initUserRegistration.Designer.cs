@@ -3,14 +3,16 @@ using GmailWithDataBase.DataAccessLayer_Ef;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace GmailWithDataBase.Migrations
 {
     [DbContext(typeof(DataAccessLayer_EF))]
-    partial class DataAccessLayer_EFModelSnapshot : ModelSnapshot
+    [Migration("20220705074801_initUserRegistration")]
+    partial class initUserRegistration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
